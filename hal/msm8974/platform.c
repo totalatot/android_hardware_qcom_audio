@@ -116,7 +116,7 @@ struct audio_block_header
 
 /* Audio calibration related functions */
 typedef void (*acdb_deallocate_t)();
-typedef int  (*acdb_init_t)();
+typedef int  (*acdb_init_v2_t)();
 typedef void (*acdb_send_audio_cal_t)(int, int);
 typedef void (*acdb_send_voice_cal_t)(int, int);
 typedef int (*acdb_reload_vocvoltable_t)(int);
@@ -139,7 +139,7 @@ struct platform_data {
     /* Audio calibration related functions */
     void                       *acdb_handle;
     int                        voice_feature_set;
-    acdb_init_t                acdb_init;
+    acdb_init_v2_t             acdb_init;
     acdb_deallocate_t          acdb_deallocate;
     acdb_send_audio_cal_t      acdb_send_audio_cal;
     acdb_send_voice_cal_t      acdb_send_voice_cal;
@@ -1039,7 +1039,7 @@ void *platform_init(struct audio_device *adev)
         initialize_huawei_sound_param_path(my_data->acdb_handle);
 #endif
 
-        my_data->acdb_init = (acdb_init_t)dlsym(my_data->acdb_handle,
+        my_data->acdb_init = (acdb_init_v2_t)dlsym(my_data->acdb_handle,
                                                     "acdb_loader_init_ACDB");
         if (my_data->acdb_init == NULL)
             ALOGE("%s: dlsym error %s for acdb_loader_init_ACDB", __func__, dlerror());
