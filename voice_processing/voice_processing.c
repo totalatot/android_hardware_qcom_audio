@@ -20,6 +20,7 @@
 #include <unistd.h>
 #include <cutils/log.h>
 #include <cutils/list.h>
+#include <stdlib.h>
 #include <hardware/audio_effect.h>
 #include <audio_effects/effect_aec.h>
 #include <audio_effects/effect_agc.h>

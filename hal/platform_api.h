@@ -76,6 +76,7 @@ int platform_set_snd_device_name(snd_device_t snd_device, const char * name);
 
 /* From platform_info_parser.c */
 int platform_info_init(void);
+int platform_snd_card_update(void *platform, enum card_status_t status);
 
 struct audio_offload_info_t;
 uint32_t platform_get_compress_offload_buffer_size(audio_offload_info_t* info);
