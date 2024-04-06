@@ -344,7 +344,7 @@ status_t AudioHardwareALSA::setParameters(const String8& keyValuePairs)
     int device;
     int btRate;
     int state;
-    ALOGV("setParameters() %s", keyValuePairs.string());
+    ALOGV("setParameters() %s", keyValuePairs.c_str());
 
     key = String8(TTY_MODE_KEY);
     if (param.get(key, value) == NO_ERROR) {
@@ -358,7 +358,7 @@ status_t AudioHardwareALSA::setParameters(const String8& keyValuePairs)
         } else {
             mDevSettingsFlag |= TTY_OFF;
         }
-        ALOGI("Changed TTY Mode=%s", value.string());
+        ALOGI("Changed TTY Mode=%s", value.c_str());
         mALSADevice->setFlags(mDevSettingsFlag);
         if(mMode != AudioSystem::MODE_IN_CALL){
            return NO_ERROR;
@@ -551,7 +551,7 @@ String8 AudioHardwareALSA::getParameters(const String8& keys)
            param.addInt(String8("isVGS"), true);
     }
 
-    ALOGV("AudioHardwareALSA::getParameters() %s", param.toString().string());
+    ALOGV("AudioHardwareALSA::getParameters() %s", param.toString().c_str());
     return param.toString();
 }
 

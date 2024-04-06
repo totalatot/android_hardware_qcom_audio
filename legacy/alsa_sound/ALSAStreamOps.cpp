@@ -288,7 +288,7 @@ String8 ALSAStreamOps::getParameters(const String8& keys)
         }
         param.add(key, value);
     }
-    ALOGV("getParameters() %s", param.toString().string());
+    ALOGV("getParameters() %s", param.toString().c_str());
     return param.toString();
 }
 
